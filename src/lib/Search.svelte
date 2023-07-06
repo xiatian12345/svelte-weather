@@ -3,21 +3,27 @@
   import SearchAdvanced from "carbon-icons-svelte/lib/SearchAdvanced.svelte";
   import {getWeather} from '../interface/serve';
 
+  import {createEventDispatcher} from 'svelte';
+
+  const dispatcher = createEventDispatcher();
 
   let searchInput = '';
   const handleKeyup = (e:KeyboardEvent)=>{
     if(e.code === 'Enter'){
+      dispatcher('startSearch');
       getWeather(searchInput)
         .then((data)=>{
-          if(data.code === '200'){
-
-          }else{
-
-          }
+          dispatcher('endSearch',{
+            code:0,
+            data
+          })
           searchInput = '';
         })
         .catch((e)=>{
-          console.log(e.message);
+          dispatcher('endSearch',{
+            code:-1,
+            data:e.message
+          })
         });
     }
   }
