@@ -1,8 +1,11 @@
+<script>
+	import { Avatar } from "@skeletonlabs/skeleton";
+</script>
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-10 text-center flex flex-col items-center">
-		<h2 class="h2">Welcome to Skeleton.</h2>
+		<Avatar initials="XT" background="bg-primary-500" />
 	</div>
 </div>
 
