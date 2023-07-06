@@ -6,7 +6,6 @@
 	import {weatherDataCode} from '../interface/types';
 	import type {weatherDataType} from '../interface/types';
 	import { Loading } from "carbon-components-svelte";
-
 	import { tick } from 'svelte';
 
 	let isSearching = false;
@@ -45,7 +44,7 @@
 
 <div class="w-full h-full flex flex-col  justify-center items-center">
 	<div class='placeholder'></div>
-	<div class="w-3/5 h-full flex flex-col items-center">
+	<div class="w-3/5 h-full flex flex-col items-center gap-10">
 		<Search on:startSearch={startSearch} on:endSearch={endSearch}/>
 
 		{#if isSearching}
