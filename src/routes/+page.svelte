@@ -9,26 +9,112 @@
 	import { tick } from 'svelte';
 
 	let isSearching = false;
-	let searchResult:weatherDataType = null;
+	// let searchResult:weatherDataType = null;
+	let searchResult:weatherDataType = {
+    "code": 4,
+    "message": "获取数据成功",
+    "data": [
+        {
+            "code": "200",
+            "updateTime": "2023-07-07T03:42+08:00",
+            "fxLink": "https://www.qweather.com/weather/guangzhou-101280101.html",
+            "now": {
+                "obsTime": "2023-07-07T03:34+08:00",
+                "temp": "29",
+                "feelsLike": "32",
+                "icon": "151",
+                "text": "多云",
+                "wind360": "199",
+                "windDir": "西南风",
+                "windScale": "1",
+                "windSpeed": "4",
+                "humidity": "85",
+                "precip": "0.0",
+                "pressure": "1000",
+                "vis": "28",
+                "cloud": "91",
+                "dew": "26"
+            },
+            "refer": {
+                "sources": [
+                    "QWeather",
+                    "NMC",
+                    "ECMWF"
+                ],
+                "license": [
+                    "CC BY-SA 4.0"
+                ]
+            },
+            "location": {
+                "name": "广州",
+                "id": "101280101",
+                "lat": "23.12518",
+                "lon": "113.28064",
+                "adm2": "广州",
+                "adm1": "广东省",
+                "country": "中国",
+                "tz": "Asia/Shanghai",
+                "utcOffset": "+08:00",
+                "isDst": "0",
+                "type": "city",
+                "rank": "11",
+                "fxLink": "https://www.qweather.com/weather/guangzhou-101280101.html"
+            }
+        },
+        {
+            "code": "200",
+            "updateTime": "2023-07-07T03:42+08:00",
+            "fxLink": "https://www.qweather.com/weather/zengcheng-101280104.html",
+            "now": {
+                "obsTime": "2023-07-07T03:36+08:00",
+                "temp": "28",
+                "feelsLike": "30",
+                "icon": "151",
+                "text": "多云",
+                "wind360": "103",
+                "windDir": "东南风",
+                "windScale": "1",
+                "windSpeed": "5",
+                "humidity": "82",
+                "precip": "0.0",
+                "pressure": "1005",
+                "vis": "30",
+                "cloud": "100",
+                "dew": "26"
+            },
+            "refer": {
+                "sources": [
+                    "QWeather",
+                    "NMC",
+                    "ECMWF"
+                ],
+                "license": [
+                    "CC BY-SA 4.0"
+                ]
+            },
+            "location": {
+                "name": "增城",
+                "id": "101280104",
+                "lat": "23.29050",
+                "lon": "113.82958",
+                "adm2": "广州",
+                "adm1": "广东省",
+                "country": "中国",
+                "tz": "Asia/Shanghai",
+                "utcOffset": "+08:00",
+                "isDst": "0",
+                "type": "city",
+                "rank": "23",
+                "fxLink": "https://www.qweather.com/weather/zengcheng-101280104.html"
+            }
+        },
+    ]
+}
 
-	let showWarning ,showInfo,showError, showAvailableData;
-
-	$:{
-		showWarning = searchResult && (searchResult.code === weatherDataCode.InvalidInput);
-		console.log('改变showWarning',showWarning);
-	}
-	$:{
-		showInfo = searchResult && (searchResult.code === weatherDataCode.InvalidData);
-		console.log('改变showWarning',showWarning);
-	}
-	$:{
-		showError =searchResult && (searchResult.code === weatherDataCode.ServerError);
-		console.log('改变showError',showError);
-	}
-	$:{
-		showAvailableData = searchResult && (searchResult.code === weatherDataCode.SuccessData);
-		console.log('改变showAvailableData',showAvailableData);
-	}
+	$:showWarning = searchResult && (searchResult.code === weatherDataCode.InvalidInput);
+	$:showInfo = searchResult && (searchResult.code === weatherDataCode.InvalidData);
+	$:showError =searchResult && (searchResult.code === weatherDataCode.ServerError);
+	$:showAvailableData = searchResult && (searchResult.code === weatherDataCode.SuccessData);
 
 	const startSearch = ()=>{
 		isSearching = true;
