@@ -25,7 +25,8 @@
 
 <Search 
   icon={SearchAdvanced} 
-  placeholder='输入城市查询天气1'
+  placeholder='输入城市查询天气'
   on:keyup={handleKeyup}
   bind:value={searchInput}
+  autofocus={true}
   />

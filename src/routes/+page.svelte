@@ -5,6 +5,8 @@
 	import { ToastNotification } from "carbon-components-svelte";
 	import {weatherDataCode} from '../interface/types';
 	import type {weatherDataType} from '../interface/types';
+	import { Loading } from "carbon-components-svelte";
+
 	import { tick } from 'svelte';
 
 	let isSearching = false;
@@ -41,12 +43,13 @@
 </script>
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 
-<div class="bg-green-100 w-full h-full flex justify-center items-center">
-	<div class="bg-red-100 w-4/5 h-full flex flex-col items-center">
+<div class="w-full h-full flex flex-col  justify-center items-center">
+	<div class='placeholder'></div>
+	<div class="w-3/5 h-full flex flex-col items-center">
 		<Search on:startSearch={startSearch} on:endSearch={endSearch}/>
 
 		{#if isSearching}
-		<h1>正在搜索中。。。。。。。。</h1>
+		<Loading/>
 		{/if}
 
 		{#if showAvailableData}
@@ -87,6 +90,11 @@
 			/>
 		{/if}
 	</div>
+	<div class='placeholder'></div>
 </div>
 <style>
+	.placeholder{
+		height:25%;
+		width:0px;
+	}
 </style>
