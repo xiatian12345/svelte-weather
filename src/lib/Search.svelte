@@ -13,17 +13,11 @@
       dispatcher('startSearch');
       getWeather(searchInput)
         .then((data)=>{
-          dispatcher('endSearch',{
-            code:0,
-            data
-          })
+          dispatcher('endSearch',data)
           searchInput = '';
         })
-        .catch((e)=>{
-          dispatcher('endSearch',{
-            code:-1,
-            data:e.message
-          })
+        .catch((data)=>{
+          dispatcher('endSearch',data)
         });
     }
   }
